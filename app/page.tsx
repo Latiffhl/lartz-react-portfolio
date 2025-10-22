@@ -7,6 +7,7 @@ import AnimatedContent from './components/AnimatedContent/AnimatedContent';
 import Squares from './components/Squares/Squares';
 import TargetCursor from './components/TargetCursor/TargetCursor';
 import GradientText from './components/GradientText/GradientText';
+import StickerPeel from './components/StickerPeel/StickerPeel';
 
 export default function Home() {
   return (
@@ -60,7 +61,7 @@ export default function Home() {
                     textAlign="center"
                   />
                   <SplitText
-                    text="Fullstack Developer"
+                    text="Software Engineer Student"
                     className="text-5xl font-semibold text-start text-[#d00f0f]"
                     delay={100}
                     duration={0.6}
@@ -81,15 +82,27 @@ export default function Home() {
                   className="text-2xl mb-8"
                 />
                 <div className="flex item-center ">
-                  <GradientText colors={['#d00f0f', '#0021aa', '#d00f0f', '#0021aa', '#d00f0f']} animationSpeed={3} showBorder={false} className="px-8 py-6 rounded-lg border cursor-target">
+                  <GradientText colors={['#d00f0f', '#3b23f1', '#d00f0f', '#3b23f1', '#d00f0f']} animationSpeed={3} showBorder={false} className="px-8 py-6 rounded-lg border cursor-target">
                     Contact Now!
                   </GradientText>
                 </div>
               </div>
             </div>
           </div>
-          <div className="col-span-6">
+          <div className="col-span-6 relative">
             <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
+
+            <StickerPeel
+              imageSrc="/assets/logo/lartz-logo-col.png"
+              width={200}
+              rotate={30}
+              peelBackHoverPct={20}
+              peelBackActivePct={40}
+              shadowIntensity={0.6}
+              lightingIntensity={0.1}
+              initialPosition={{ x: -100, y: 100 }}
+              className="absolute top-20 right-10"
+            />
           </div>
         </div>
       </div>
