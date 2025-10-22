@@ -5,10 +5,15 @@ import SplitText from './components/SplitText/SplitText';
 import BlurText from './components/BlurText/BlurText';
 import AnimatedContent from './components/AnimatedContent/AnimatedContent';
 import Squares from './components/Squares/Squares';
+import TargetCursor from './components/TargetCursor/TargetCursor';
+import GradientText from './components/GradientText/GradientText';
 
 export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden ">
+      <div>
+        <TargetCursor spinDuration={2} hideDefaultCursor={true} />
+      </div>
       <div className="absolute top-0 right-0 left-0 bottom-0 w-full h-full ">
         <Squares
           speed={0.5}
@@ -22,9 +27,9 @@ export default function Home() {
         <div className="grid grid-cols-12">
           <div className="col-span-6">
             <div className="flex items-center h-full">
-              <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-6 ">
                 <AnimatedContent distance={150} direction="horizontal" reverse={false} duration={1.2} ease="bounce.out" initialOpacity={0.2} animateOpacity scale={1.1} threshold={0.2} delay={0.3}>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 ">
                     <h1 className="text-2xl font-bold text-white">I'am Ready For </h1>
                     <RotatingText
                       texts={['Graphic Design', 'Web Developer', 'Web3 Enthusiast', 'Creative Coder']}
@@ -75,6 +80,11 @@ export default function Home() {
                   direction="top"
                   className="text-2xl mb-8"
                 />
+                <div className="flex item-center ">
+                  <GradientText colors={['#d00f0f', '#0021aa', '#d00f0f', '#0021aa', '#d00f0f']} animationSpeed={3} showBorder={false} className="px-8 py-6 rounded-lg border cursor-target">
+                    Contact Now!
+                  </GradientText>
+                </div>
               </div>
             </div>
           </div>

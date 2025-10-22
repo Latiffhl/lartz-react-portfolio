@@ -1,4 +1,4 @@
-// r3f.d.ts
+
 import { MeshLine, MeshLineMaterial } from 'meshline';
 import { Object3DNode, extend } from '@react-three/fiber';
 
