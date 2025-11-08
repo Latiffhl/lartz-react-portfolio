@@ -9,6 +9,9 @@ import TargetCursor from './components/TargetCursor/TargetCursor';
 import GradientText from './components/GradientText/GradientText';
 import StickerPeel from './components/StickerPeel/StickerPeel';
 import LogoLoop from './components/LogoLoop/LogoLoop';
+import DecayCard from './components/DecayCard/DecayCard';
+import StarBorder from './components/StarBorder/StarBorder';
+import SpotlightCard from './components/SpotlightCard/SpotlightCard';
 
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 
@@ -78,7 +81,7 @@ export default function Home() {
                   />
                   <SplitText
                     text="Software Engineer Student"
-                    className="text-5xl font-semibold text-start text-[#d00f0f]"
+                    className="text-5xl font-semibold text-start text-[#460fd0]"
                     delay={100}
                     duration={0.6}
                     ease="power3.out"
@@ -122,8 +125,53 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div style={{ height: '200px', position: 'relative', overflow: 'hidden' }}>
+      <div style={{ height: 'auto', position: 'relative', overflow: 'hidden' }}>
         <LogoLoop logos={techLogos} speed={120} direction="left" logoHeight={48} gap={40} pauseOnHover scaleOnHover fadeOut fadeOutColor="#ffffff" ariaLabel="Technology partners" />
+      </div>
+      {/* about */}
+      <div className="bg-black py-25 min-h-screen text-white relative z-10">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-12">
+            {/* Kolom Kiri: Card */}
+            <div className="col-span-4">
+              {/* Posisikan card di kanan kolom kiri */}
+              <DecayCard width={300} height={400} image="/assets/foto/pc-1.jpg">
+                <h2 className="text-3xl font-extrabold text-white">
+                  Lartz
+                  <br />
+                  Dev
+                </h2>
+              </DecayCard>
+            </div>
+            {/* Kolom Kanan: Teks */}
+            <div className="col-span-8  mt-5  text-start">
+              <h3 className="text-4xl font-semibold mb-4 text-[#460fd0]">I Develop Applications and also as a graphic designer</h3>
+              <p className="text-lg mb-4 ">Not only creating applications but also learning how to organize the infrastructure of an application properly so that it is comfortable for users.</p>
+              <p className="text-lg mb-4">Sufficient mastery of language programs commonly used by industry.</p>
+
+              <div className="mt-4 inline-block relative hover:y-1 hover:scale-105 transition-all">
+                <StarBorder as="button" className="px-6 py-3 cursor-target" color="cyan" speed="5s" thickness={2} size={48}>
+                  View Portfolio
+                </StarBorder>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-black py-25 min-h-screen text-white relative z-10 border">
+        <div className="container mx-auto px-4">
+          <h2 className="text-4xl font-semibold mb-8 text-center text-[#d00f0f]">My Latest Projects</h2>
+          <div className="grid grid-cols-12 justify-center items-center gap-6 text-center mt-10">
+            <div className="col-span-3">
+              <SpotlightCard className="custom-spotlight-card" spotlightColor="rgba(0, 229, 255, 0.2)">
+                Hello World
+              </SpotlightCard>
+            </div>
+            <div className="col-span-3">Hey there</div>
+            <div className="col-span-3">Hey there</div>
+            <div className="col-span-3">Hey there</div>
+          </div>
+        </div>
       </div>
     </div>
   );
