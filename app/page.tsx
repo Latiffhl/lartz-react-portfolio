@@ -191,7 +191,7 @@ export default function Home() {
         {/* Insan AI (Gambar Kiri - Desktop) */}
         {/* ========================================================================= */}
         <div className="flex justify-center items-center py-8">
-          <SpotlightCard className="custom-spotlight-card hover:y-1 hover:scale-102 transition-all w-full max-w-7xl" spotlightColor="rgba(106, 0, 255)">
+          <SpotlightCard className="custom-spotlight-card hover:y-1 hover:scale-102 transition-all w-full max-w-7xl" spotlightColor="rgba(106, 0, 255, 1)">
             {/* Perubahan: px-8 di mobile, md:px-4 di desktop */}
             <div className="container mx-auto **px-8 md:px-4**">
               <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-8 md:gap-12">
@@ -235,7 +235,7 @@ export default function Home() {
         {/* Suvarna (Teks Kiri - Desktop) */}
         {/* ========================================================================= */}
         <div className="flex justify-center items-center py-8">
-          <SpotlightCard className="custom-spotlight-card hover:y-1 hover:scale-102 transition-all w-full max-w-7xl" spotlightColor="rgba(212, 38, 25)">
+          <SpotlightCard className="custom-spotlight-card hover:y-1 hover:scale-102 transition-all w-full max-w-7xl" spotlightColor="rgba(212, 38, 25, 1)">
             {/* Perubahan: px-8 di mobile, md:px-4 di desktop */}
             <div className="container mx-auto **px-8 md:px-4**">
               <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-8 md:gap-12">
@@ -482,7 +482,7 @@ export default function Home() {
             <SpotlightCard className="custom-spotlight-card cursor-target hover:y-1 hover:scale-105 transition-all w-40 h-50" spotlightColor="rgba(0, 229, 255, 0.2)">
               <div className="flex flex-col items-center justify-center text-center p-1 ">
                 <img src="/assets/images/logoskills/logojs.png" alt="Logo Sklills" className="w-20 h-20 mb-3 rounded-full hover:y-1 hover:scale-105 transition-all" />
-                <h3 className="text-xl font-semibold mb-2">JS</h3>
+                <h3 className="text-xl font-semibold mb-2">JavaScript</h3>
               </div>
             </SpotlightCard>
 
