@@ -53,15 +53,24 @@ export default function Home() {
       </div>
 
       {/* LANYARD WRAPPER (TALi) - Posisi Absolute, z-40 */}
-      {/* Tali akan mentok ke atas, dan berada di bawah navbar (z-50) */}
+      {/* Memastikan tidak ada overflow tambahan. Pointer-events-none penting! */}
       <div
-        className="absolute top-0 right-0 w-full h-full z-40 pointer-events-none hidden md:block"
-        style={{ height: '400px', width: '50%' }} // Sesuaikan agar Lanyard hanya terlihat di area atas
+        className="absolute top-0 right-0 z-40 pointer-events-none hidden md:block"
+        style={{ height: '400px', width: '50vw', maxWidth: '800px' }} // Menggunakan vw dan max-width untuk responsivitas yang lebih baik
       >
         <LanyardWrapper position={[0, 0, 12]} gravity={[0, -40, 0]} />
       </div>
 
-      {/* NAVBAR - Posisi Fixed, z-50 (Menimpa Lanyard) */}
+      {/* STICKER PEEL WRAPPER - Dipindahkan di sini, z-40 (sama dengan lanyard, atau z-30) */}
+      {/* Mengatur posisinya secara absolut agar bebas dari layout grid */}
+      <StickerPeelWrapper
+        imageSrc="/assets/logo/lartz-logo-col.png"
+        width={200}
+        initialPosition={{ x: -100, y: 100 }} // Sesuaikan posisi ini
+        className="absolute top-20 right-10 z-40 hidden md:block" // z-40 agar di atas konten utama tapi di bawah navbar
+      />
+
+      {/* NAVBAR - Posisi Fixed, z-50 (Menimpa Lanyard dan Sticker Peel) */}
       <PillNavWrapper
         logo={logo}
         logoAlt="Company Logo"
@@ -72,7 +81,6 @@ export default function Home() {
           { label: 'Contact', href: '#contact' },
         ]}
         activeHref="/"
-        // PENTING: z-50 untuk memastikan di atas Lanyard (z-40)
         className="fixed top-0 left-0 right-0 z-50 max-w-7xl mx-auto custom-nav py-4 md:py-6 px-4"
         ease="power2.easeOut"
         baseColor="#000000"
@@ -84,19 +92,18 @@ export default function Home() {
       {/* Konten Utama */}
       <div className="container mx-auto min-h-screen overflow-x-hidden p-4 md:p-8 pt-20 md:pt-32">
         <div className="grid grid-cols-1 md:grid-cols-12">
-          {/* KOLOM KANAN (Gambar/Lanyard di desktop) - HAPUS LanyardWrapper DARI SINI */}
+          {/* KOLOM KANAN (Tempat foto profil untuk mobile) */}
           <div
-            className="col-span-full md:col-span-6 relative overflow-x-hidden 
+            className="col-span-full md:col-span-6 relative overflow-x-hidden
                             order-1 md:order-2"
           >
-            {/* LanyardWrapper Dihapus dari sini */}
+            {/* Hapus StickerPeelWrapper dari sini karena sudah dipindahkan */}
             <div className=" md:hidden flex justify-center py-8">
               <div className="w-48 h-48 rounded-full bg-gray-700 overflow-hidden shadow-2xl">
                 <img src="/assets/foto-latif.jpg" alt="Latif Palikal Isbah" className="w-full h-full object-cover" />
               </div>
             </div>
-
-            <StickerPeelWrapper imageSrc="/assets/logo/lartz-logo-col.png" width={200} initialPosition={{ x: -100, y: 100 }} className="absolute top-10 right-10 hidden md:block" />
+            {/* StickerPeelWrapper Dihapus dari sini */}
           </div>
 
           {/* KOLOM KIRI (Teks) */}
@@ -155,7 +162,6 @@ export default function Home() {
                   className="text-lg sm:text-xl mb-8 text-center md:text-left"
                 />
 
-                {/* Tombol Contact Now */}
                 <div className="flex item-center justify-center md:justify-start">
                   <GradientText colors={['#d00f0f', '#3b23f1', '#d00f0f', '#3b23f1', '#d00f0f']} animationSpeed={3} showBorder={false} className="px-8 py-4 rounded-lg border cursor-target text-lg">
                     Contact Now!
