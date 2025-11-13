@@ -6,6 +6,7 @@ import SpotlightCard from './components/SpotlightCard/SpotlightCard';
 import ScrollStack from './components/ScrollStack/ScrollStack';
 import TiltedCard from './components/TiltedCard/TiltedCard';
 
+import PillNavWrapper from './components/PillNavWrapper';
 import RotatingTextWrapper from './components/RotatingTextWrapper';
 import SplitTextWrapper from './components/SplitTextWrapper';
 import BlurTextWrapper from './components/BlurTextWrapper';
@@ -31,6 +32,7 @@ const imageLogos = [
   { src: '/logos/company2.png', alt: 'Company 2', href: 'https://company2.com' },
   { src: '/logos/company3.png', alt: 'Company 3', href: 'https://company3.com' },
 ];
+const logo = '/assets/logo/lartz-logo-col.png';
 
 export default function Home() {
   return (
@@ -48,11 +50,32 @@ export default function Home() {
         />
       </div>
 
-      <div className="container mx-auto min-h-screen overflow-x-hidden p-4 md:p-8">
+      <PillNavWrapper
+        logo={logo}
+        logoAlt="Company Logo"
+        items={[
+          // Menggunakan hash links untuk navigasi di halaman yang sama
+          { label: 'Home', href: '#' },
+          { label: 'About', href: '#about' },
+          { label: 'Services', href: '#portfolio' }, // Mengubah Services ke Portfolio/Project
+          { label: 'Contact', href: '#contact' },
+        ]}
+        activeHref="/"
+        // Memberikan style fixed/sticky seperti navbar
+        className="fixed top-0 left-0 right-0 z-50 max-w-7xl mx-auto custom-nav py-4 md:py-6 px-4"
+        ease="power2.easeOut"
+        baseColor="#000000"
+        pillColor="#ffffff"
+        hoveredPillTextColor="#ffffff"
+        pillTextColor="#000000"
+      />
+
+      {/* Konten Utama - Menambahkan padding atas untuk mengatasi navbar fixed */}
+      <div className="container mx-auto min-h-screen overflow-x-hidden p-4 md:p-8 pt-20 md:pt-32">
         <div className="grid grid-cols-1 md:grid-cols-12">
           <div
             className="col-span-full md:col-span-6 relative overflow-x-hidden 
-                         order-1 md:order-2"
+                            order-1 md:order-2"
           >
             <div className="hidden md:block">
               <LanyardWrapper position={[0, 0, 12]} gravity={[0, -40, 0]} />

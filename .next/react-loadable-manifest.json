@@ -38,6 +38,16 @@
       "static/chunks/499.54fd037c27b1ef34.js"
     ]
   },
+  "app\\components\\PillNavWrapper.tsx -> ./PillNav/PillNav": {
+    "id": 3283,
+    "files": [
+      "static/chunks/c15bf2b0.2ece6baba74be594.js",
+      "static/chunks/4b1a69f1.563c65b64d054379.js",
+      "static/chunks/605.fe3b9a255ae1fcaa.js",
+      "static/chunks/802.7e6e574f895815c0.js",
+      "static/chunks/283.596febabdaea030e.js"
+    ]
+  },
   "app\\components\\RotatingTextWrapper.tsx -> ./RotatingText/RotatingText": {
     "id": 692,
     "files": [
