@@ -40,6 +40,8 @@ export default function Home() {
       <div>
         <TargetCursorWrapper spinDuration={2} hideDefaultCursor={true} />
       </div>
+
+      {/* BACKGROUND SQUARES (z-0 atau default) */}
       <div className="absolute top-0 right-0 left-0 bottom-0 w-full h-full overflow-hidden">
         <SquaresWrapper
           speed={0.5}
@@ -50,18 +52,27 @@ export default function Home() {
         />
       </div>
 
+      {/* LANYARD WRAPPER (TALi) - Posisi Absolute, z-40 */}
+      {/* Tali akan mentok ke atas, dan berada di bawah navbar (z-50) */}
+      <div
+        className="absolute top-0 right-0 w-full h-full z-40 pointer-events-none hidden md:block"
+        style={{ height: '400px', width: '50%' }} // Sesuaikan agar Lanyard hanya terlihat di area atas
+      >
+        <LanyardWrapper position={[0, 0, 12]} gravity={[0, -40, 0]} />
+      </div>
+
+      {/* NAVBAR - Posisi Fixed, z-50 (Menimpa Lanyard) */}
       <PillNavWrapper
         logo={logo}
         logoAlt="Company Logo"
         items={[
-          // Menggunakan hash links untuk navigasi di halaman yang sama
           { label: 'Home', href: '#' },
           { label: 'About', href: '#about' },
-          { label: 'Services', href: '#portfolio' }, // Mengubah Services ke Portfolio/Project
+          { label: 'Services', href: '#portfolio' },
           { label: 'Contact', href: '#contact' },
         ]}
         activeHref="/"
-        // Memberikan style fixed/sticky seperti navbar
+        // PENTING: z-50 untuk memastikan di atas Lanyard (z-40)
         className="fixed top-0 left-0 right-0 z-50 max-w-7xl mx-auto custom-nav py-4 md:py-6 px-4"
         ease="power2.easeOut"
         baseColor="#000000"
@@ -70,17 +81,15 @@ export default function Home() {
         pillTextColor="#000000"
       />
 
-      {/* Konten Utama - Menambahkan padding atas untuk mengatasi navbar fixed */}
+      {/* Konten Utama */}
       <div className="container mx-auto min-h-screen overflow-x-hidden p-4 md:p-8 pt-20 md:pt-32">
         <div className="grid grid-cols-1 md:grid-cols-12">
+          {/* KOLOM KANAN (Gambar/Lanyard di desktop) - HAPUS LanyardWrapper DARI SINI */}
           <div
             className="col-span-full md:col-span-6 relative overflow-x-hidden 
                             order-1 md:order-2"
           >
-            <div className="hidden md:block">
-              <LanyardWrapper position={[0, 0, 12]} gravity={[0, -40, 0]} />
-            </div>
-
+            {/* LanyardWrapper Dihapus dari sini */}
             <div className=" md:hidden flex justify-center py-8">
               <div className="w-48 h-48 rounded-full bg-gray-700 overflow-hidden shadow-2xl">
                 <img src="/assets/foto-latif.jpg" alt="Latif Palikal Isbah" className="w-full h-full object-cover" />
@@ -90,6 +99,7 @@ export default function Home() {
             <StickerPeelWrapper imageSrc="/assets/logo/lartz-logo-col.png" width={200} initialPosition={{ x: -100, y: 100 }} className="absolute top-10 right-10 hidden md:block" />
           </div>
 
+          {/* KOLOM KIRI (Teks) */}
           <div className="col-span-full md:col-span-6 order-2 md:order-1">
             <div className="flex items-center md:h-full py-8 md:py-0">
               <div className="flex flex-col gap-6 w-full text-center md:text-left">
