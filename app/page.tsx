@@ -1,11 +1,11 @@
 import Image from 'next/image';
-
+import Lanyard from './components/Lanyard/Lanyard';
 import RotatingText from './components/RotatingText/RotatingText';
 import SplitText from './components/SplitText/SplitText';
 import BlurText from './components/BlurText/BlurText';
 import AnimatedContent from './components/AnimatedContent/AnimatedContent';
 import Squares from './components/Squares/Squares';
-import dynamic from 'next/dynamic';
+import TargetCursor from './components/TargetCursor/TargetCursor';
 import GradientText from './components/GradientText/GradientText';
 import StickerPeel from './components/StickerPeel/StickerPeel';
 import LogoLoop from './components/LogoLoop/LogoLoop';
@@ -30,15 +30,6 @@ const imageLogos = [
   { src: '/logos/company3.png', alt: 'Company 3', href: 'https://company3.com' },
 ];
 
-const DynamicTargetCursor = dynamic(() => import('./components/TargetCursor/TargetCursor'), {
-  ssr: false,
-  loading: () => null,
-});
-
-const DynamicLanyard = dynamic(() => import('./components/Lanyard/Lanyard'), {
-  ssr: false,
-  loading: () => null,
-});
 export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden ">
