@@ -72,15 +72,11 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
   const [curve] = useState(() => new THREE.CatmullRomCurve3([new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3(), new THREE.Vector3()]));
   const [dragged, drag] = useState<false | THREE.Vector3>(false);
   const [hovered, hover] = useState(false);
-
-  const [isSmall, setIsSmall] = useState<boolean>(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth < 1024;
-    }
-    return false;
-  });
+  const [isSmall, setIsSmall] = useState<boolean>(false);
 
   useEffect(() => {
+    setIsSmall(window.innerWidth < 1024);
+
     const handleResize = (): void => {
       setIsSmall(window.innerWidth < 1024);
     };
