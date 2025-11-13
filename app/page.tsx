@@ -1,23 +1,23 @@
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import Lanyard from './components/Lanyard/Lanyard';
-import RotatingText from './components/RotatingText/RotatingText';
-import SplitText from './components/SplitText/SplitText';
-import BlurText from './components/BlurText/BlurText';
-import AnimatedContent from './components/AnimatedContent/AnimatedContent';
-import Squares from './components/Squares/Squares';
 import GradientText from './components/GradientText/GradientText';
-import StickerPeel from './components/StickerPeel/StickerPeel';
-import LogoLoop from './components/LogoLoop/LogoLoop';
-import DecayCard from './components/DecayCard/DecayCard';
 import StarBorder from './components/StarBorder/StarBorder';
 import SpotlightCard from './components/SpotlightCard/SpotlightCard';
 import ScrollStack from './components/ScrollStack/ScrollStack';
 import TiltedCard from './components/TiltedCard/TiltedCard';
 
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
+import RotatingTextWrapper from './components/RotatingTextWrapper';
+import SplitTextWrapper from './components/SplitTextWrapper';
+import BlurTextWrapper from './components/BlurTextWrapper';
+import AnimatedContentWrapper from './components/AnimatedContentWrapper';
+import LogoLoopWrapper from './components/LogoLoopWrapper';
+import DecayCardWrapper from './components/DecayCardWrapper';
+import LanyardWrapper from './components/LanyardWrapper';
+import SquaresWrapper from './components/SquaresWrapper';
+import StickerPeelWrapper from './components/StickerPeelWrapper';
+import TargetCursorWrapper from './components/TargetCursorWrapper';
 
-const TargetCursor = dynamic(() => import('./components/TargetCursor/TargetCursor'), { ssr: false });
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 
 const techLogos = [
   { node: <SiReact />, title: 'React', href: 'https://react.dev' },
@@ -36,10 +36,10 @@ export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden ">
       <div>
-        <TargetCursor spinDuration={2} hideDefaultCursor={true} />
+        <TargetCursorWrapper spinDuration={2} hideDefaultCursor={true} />
       </div>
       <div className="absolute top-0 right-0 left-0 bottom-0 w-full h-full overflow-hidden">
-        <Squares
+        <SquaresWrapper
           speed={0.5}
           squareSize={40}
           direction="diagonal" // up, down, left, right, diagonal
@@ -55,7 +55,7 @@ export default function Home() {
                          order-1 md:order-2"
           >
             <div className="hidden md:block">
-              <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
+              <LanyardWrapper position={[0, 0, 12]} gravity={[0, -40, 0]} />
             </div>
 
             <div className=" md:hidden flex justify-center py-8">
@@ -64,16 +64,16 @@ export default function Home() {
               </div>
             </div>
 
-            <StickerPeel imageSrc="/assets/logo/lartz-logo-col.png" width={200} initialPosition={{ x: -100, y: 100 }} className="absolute top-10 right-10 hidden md:block" />
+            <StickerPeelWrapper imageSrc="/assets/logo/lartz-logo-col.png" width={200} initialPosition={{ x: -100, y: 100 }} className="absolute top-10 right-10 hidden md:block" />
           </div>
 
           <div className="col-span-full md:col-span-6 order-2 md:order-1">
             <div className="flex items-center md:h-full py-8 md:py-0">
               <div className="flex flex-col gap-6 w-full text-center md:text-left">
-                <AnimatedContent distance={150} direction="horizontal" reverse={false} duration={1.2} ease="bounce.out" initialOpacity={0.2} animateOpacity scale={1.1} threshold={0.2} delay={0.3}>
+                <AnimatedContentWrapper distance={150} direction="horizontal" reverse={false} duration={1.2} ease="bounce.out" initialOpacity={0.2} animateOpacity scale={1.1} threshold={0.2} delay={0.3}>
                   <div className="flex items-center gap-2 justify-center md:justify-start">
                     <h1 className="text-xl sm:text-2xl font-bold text-white">I'am Ready For </h1>
-                    <RotatingText
+                    <RotatingTextWrapper
                       texts={['Graphic Design', 'Web Developer', 'Web3 Enthusiast', 'Creative Coder']}
                       mainClassName="px-2 bg-[#d00f0f] text-black overflow-hidden py-0.5 rounded-lg text-xl sm:text-2xl font-bold inline-flex transition-all"
                       staggerFrom={'last'}
@@ -86,10 +86,10 @@ export default function Home() {
                       rotationInterval={2000}
                     />
                   </div>
-                </AnimatedContent>
+                </AnimatedContentWrapper>
 
                 <div className="flex flex-col items-center md:items-start ">
-                  <SplitText
+                  <SplitTextWrapper
                     text="I'am Latif Palikal Isbah"
                     className="text-4xl sm:text-5xl font-semibold text-start md:text-start"
                     delay={50}
@@ -101,7 +101,7 @@ export default function Home() {
                     threshold={0.1}
                     rootMargin="-100px"
                   />
-                  <SplitText
+                  <SplitTextWrapper
                     text="Software Engineer"
                     className="text-4xl sm:text-5xl font-semibold text-center md:text-start text-[#460fd0]"
                     delay={100}
@@ -114,7 +114,7 @@ export default function Home() {
                     rootMargin="-100px"
                   />
                 </div>
-                <BlurText
+                <BlurTextWrapper
                   text="I am a software engineering student with expertise in programming and data management. I have experience working on projects both independently and in teams."
                   delay={75}
                   animateBy="words"
@@ -134,7 +134,7 @@ export default function Home() {
         </div>
       </div>
       <div style={{ height: 'auto', position: 'relative', overflow: 'hidden' }} className="py-12 w-full bg-black">
-        <LogoLoop logos={techLogos} speed={120} direction="left" logoHeight={40} gap={30} pauseOnHover scaleOnHover fadeOut fadeOutColor="#ffffff" ariaLabel="Technology partners" />
+        <LogoLoopWrapper logos={techLogos} speed={120} direction="left" logoHeight={40} gap={30} pauseOnHover scaleOnHover fadeOut fadeOutColor="#ffffff" ariaLabel="Technology partners" />
       </div>
 
       {/* ABOUT */}
@@ -146,13 +146,13 @@ export default function Home() {
             {/* Mobile: col-span-12, di tengah (flex justify-center) */}
             {/* Tablet/Desktop: md:col-span-4 */}
             <div className="col-span-full md:col-span-4 flex justify-center md:justify-start">
-              <DecayCard width={300} height={400} image="/assets/foto/pc-1.jpg">
+              <DecayCardWrapper width={300} height={400} image="/assets/foto/pc-1.jpg">
                 <h2 className="text-3xl font-extrabold text-white">
                   Lartz
                   <br />
                   Dev
                 </h2>
-              </DecayCard>
+              </DecayCardWrapper>
             </div>
 
             {/* Kolom Kanan: Teks */}

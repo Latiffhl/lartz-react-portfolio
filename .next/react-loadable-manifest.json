@@ -1,20 +1,103 @@
 {
+  "app\\components\\AnimatedContentWrapper.tsx -> ./AnimatedContent/AnimatedContent": {
+    "id": 451,
+    "files": [
+      "static/chunks/c15bf2b0.2ece6baba74be594.js",
+      "static/chunks/605.fe3b9a255ae1fcaa.js",
+      "static/chunks/580.eb3d059d8673c3db.js",
+      "static/chunks/451.75cd9ea405044e05.js"
+    ]
+  },
+  "app\\components\\BlurTextWrapper.tsx -> ./BlurText/BlurText": {
+    "id": 3065,
+    "files": [
+      "static/chunks/65.e1fd314ed53cb958.js"
+    ]
+  },
+  "app\\components\\DecayCardWrapper.tsx -> ./DecayCard/DecayCard": {
+    "id": 7199,
+    "files": [
+      "static/chunks/c15bf2b0.2ece6baba74be594.js",
+      "static/chunks/605.fe3b9a255ae1fcaa.js",
+      "static/chunks/199.fc710051ce0b42c4.js"
+    ]
+  },
+  "app\\components\\LanyardWrapper.tsx -> ./Lanyard/Lanyard": {
+    "id": 91,
+    "files": [
+      "static/chunks/b536a0f1.4d2c17af5d9d1794.js",
+      "static/chunks/1329d575.16915d95397758f8.js",
+      "static/chunks/080de1a6.85449072d7a41bb2.js",
+      "static/chunks/971.8d13987c1aa13f23.js",
+      "static/chunks/91.9b5b30ff088bde14.js"
+    ]
+  },
+  "app\\components\\LogoLoopWrapper.tsx -> ./LogoLoop/LogoLoop": {
+    "id": 5880,
+    "files": [
+      "static/chunks/499.54fd037c27b1ef34.js"
+    ]
+  },
+  "app\\components\\RotatingTextWrapper.tsx -> ./RotatingText/RotatingText": {
+    "id": 692,
+    "files": [
+      "static/chunks/692.60ce5e661b864a59.js"
+    ]
+  },
+  "app\\components\\SplitTextWrapper.tsx -> ./SplitText/SplitText": {
+    "id": 5513,
+    "files": [
+      "static/chunks/c15bf2b0.2ece6baba74be594.js",
+      "static/chunks/605.fe3b9a255ae1fcaa.js",
+      "static/chunks/580.eb3d059d8673c3db.js",
+      "static/chunks/513.bac64e9c1114b047.js"
+    ]
+  },
+  "app\\components\\SquaresWrapper.tsx -> ./Squares/Squares": {
+    "id": 2559,
+    "files": [
+      "static/chunks/559.5338f2b024f85fbe.js"
+    ]
+  },
+  "app\\components\\StickerPeelWrapper.tsx -> ./StickerPeel/StickerPeel": {
+    "id": 3523,
+    "files": [
+      "static/chunks/c15bf2b0.2ece6baba74be594.js",
+      "static/chunks/605.fe3b9a255ae1fcaa.js",
+      "static/chunks/902.44e21f3f094a776e.js",
+      "static/chunks/523.480b36ac39221f2b.js"
+    ]
+  },
+  "app\\components\\TargetCursorWrapper.tsx -> ./TargetCursor/TargetCursor": {
+    "id": 9403,
+    "files": [
+      "static/chunks/c15bf2b0.2ece6baba74be594.js",
+      "static/chunks/605.fe3b9a255ae1fcaa.js",
+      "static/chunks/403.05737e68051323ed.js"
+    ]
+  },
   "node_modules\\@react-three\\drei\\core\\VideoTexture.js -> hls.js": {
-    "id": "node_modules\\@react-three\\drei\\core\\VideoTexture.js -> hls.js",
+    "id": null,
     "files": []
   },
   "node_modules\\@react-three\\drei\\web\\FaceLandmarker.js -> @mediapipe/tasks-vision": {
-    "id": "node_modules\\@react-three\\drei\\web\\FaceLandmarker.js -> @mediapipe/tasks-vision",
+    "id": null,
     "files": []
   },
   "node_modules\\@react-three\\rapier\\dist\\react-three-rapier.esm.js -> @dimforge/rapier3d-compat": {
-    "id": "node_modules\\@react-three\\rapier\\dist\\react-three-rapier.esm.js -> @dimforge/rapier3d-compat",
+    "id": 2487,
     "files": []
   },
-  "node_modules\\next\\dist\\client\\dev\\hot-reloader\\app\\use-websocket.js -> @vercel/turbopack-ecmascript-runtime/browser/dev/hmr-client/hmr-client.ts": {
-    "id": "node_modules\\next\\dist\\client\\dev\\hot-reloader\\app\\use-websocket.js -> @vercel/turbopack-ecmascript-runtime/browser/dev/hmr-client/hmr-client.ts",
+  "node_modules\\next\\dist\\client\\index.js -> ../pages/_app": {
+    "id": 5139,
     "files": [
-      "static/chunks/_app-pages-browser_node_modules_next_dist_client_dev_noop-turbopack-hmr_js.js"
+      "static/chunks/139.7a5a8e93a21948c1.js"
+    ]
+  },
+  "node_modules\\next\\dist\\client\\index.js -> ../pages/_error": {
+    "id": 1646,
+    "files": [
+      "static/chunks/646.f342b7cffc01feb0.js"
     ]
   }
 }
