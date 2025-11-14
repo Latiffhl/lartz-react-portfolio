@@ -5,7 +5,14 @@ import StarBorder from './components/StarBorder/StarBorder';
 import SpotlightCard from './components/SpotlightCard/SpotlightCard';
 import ScrollStack from './components/ScrollStack/ScrollStack';
 import TiltedCard from './components/TiltedCard/TiltedCard';
+import React from 'react';
+import { useRef } from 'react';
+import VariableProximity from './components/VariableProximity/VariableProximity';
 
+import ShinyTextWrapper from './components/ShinyTextWrapper';
+import ElectricBorderWrapper from './components/ElectricBorderWrapper';
+import ParticlesWrapper from './components/ParticlesWrapper';
+import LightRaysWrapper from './components/LightRaysWrapper';
 import CarouselWrapper from './components/CarouselWrapper';
 import PillNavWrapper from './components/PillNavWrapper';
 import RotatingTextWrapper from './components/RotatingTextWrapper';
@@ -21,23 +28,46 @@ import TargetCursorWrapper from './components/TargetCursorWrapper';
 
 import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
 
-const techLogos = [
-  { node: <SiReact />, title: 'React', href: 'https://react.dev' },
-  { node: <SiNextdotjs />, title: 'Next.js', href: 'https://nextjs.org' },
-  { node: <SiTypescript />, title: 'TypeScript', href: 'https://www.typescriptlang.org' },
-  { node: <SiTailwindcss />, title: 'Tailwind CSS', href: 'https://tailwindcss.com' },
+const runningTextData: LogoItem[] = [
+  {
+    node: <span className="text-xl font-extrabold uppercase whitespace-nowrap tracking-wider mb-2">THIS IS NOT A COST.</span>,
+  },
+
+  // {
+  //   node: (
+  //     <div className="flex items-center">
+  //       <img src="/assets/logo/rotate-img.png" alt="Rotate Separator" className="h-10 w-auto object-contain mx-4" />
+  //     </div>
+  //   ),
+  // },
+
+  {
+    node: <span className="text-xl font-extrabold uppercase whitespace-nowrap tracking-wider text-white mb-2">THIS IS A PERMANENT INVESTMENT IN THE FUTURE OF YOUR BUSINESS.</span>,
+  },
+
+  {
+    node: (
+      <div className="flex items-center">
+        <img src="/assets/logo/rotate-img.png" alt="Rotate Separator" className="h-10 mt-3 w-auto object-contain mx-4" />
+      </div>
+    ),
+  },
 ];
-// Alternative with image sources
-const imageLogos = [
-  { src: '/logos/company1.png', alt: 'Company 1', href: 'https://company1.com' },
-  { src: '/logos/company2.png', alt: 'Company 2', href: 'https://company2.com' },
-  { src: '/logos/company3.png', alt: 'Company 3', href: 'https://company3.com' },
-];
+
 const logo = '/assets/logo/lartz-logo-col.png';
 
 export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden ">
+      <a
+        href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20Anda."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 transition-transform duration-300 hover:scale-110 cursor-pointer animate-whatsapp-shake"
+        aria-label="Chat via WhatsApp"
+      >
+        <img src="/assets/logo/whatsapp-icon.png" alt="WhatsApp Chat" className="w-16 h-16 rounded-full shadow-lg" />
+      </a>
       <div>
         <TargetCursorWrapper spinDuration={2} hideDefaultCursor={true} />
       </div>
@@ -80,7 +110,7 @@ export default function Home() {
       <div className="container mx-auto min-h-screen overflow-x-hidden p-4 md:p-8 pt-20 md:pt-32">
         <div className="grid grid-cols-1 md:grid-cols-12">
           {/* KOLOM KANAN (Tempat foto profil untuk mobile) */}
-          <div className="col-span-full md:col-span-6 relative overflow-x-hidden order-1 md:order-2">
+          <div className="col-span-full md:col-span-5 relative overflow-x-hidden order-1 md:order-2">
             <div className=" md:hidden flex justify-center py-8">
               <div className="w-48 h-48 rounded-full bg-gray-700 overflow-hidden shadow-2xl">
                 <img src="/assets/logo/profile-mobile.png" alt="Latif Palikal Isbah" className="w-full h-full object-cover" />
@@ -89,8 +119,8 @@ export default function Home() {
           </div>
 
           {/* KOLOM KIRI (Teks) */}
-          <div className="col-span-full md:col-span-6 order-2 md:order-1">
-            <div className="flex items-center md:h-full py-8 md:py-0 md:justify-end">
+          <div className="col-span-full md:col-span-7 order-2 md:order-1">
+            <div className="flex items-center text-center md:text-left md:h-full py-8 md:py-0 md:justify-end">
               <div className="flex flex-col gap-6 w-full mx-auto text-center md:text-left">
                 <AnimatedContentWrapper distance={150} direction="horizontal" reverse={false} duration={1.2} ease="bounce.out" initialOpacity={0.2} animateOpacity scale={1.1} threshold={0.2} delay={0.3}>
                   <div className="flex items-center gap-2 justify-center md:justify-start">
@@ -124,7 +154,7 @@ export default function Home() {
                     rootMargin="-100px"
                   />
                   <SplitTextWrapper
-                    text="Software Engineer"
+                    text="Software Engineer Student"
                     className="text-4xl sm:text-5xl font-semibold text-center md:text-start text-[#460fd0]"
                     delay={100}
                     duration={0.6}
@@ -136,12 +166,17 @@ export default function Home() {
                     rootMargin="-100px"
                   />
                 </div>
-                <BlurTextWrapper
+                <SplitTextWrapper
                   text="I am a software engineering student with expertise in programming and data management. I have experience working on projects both independently and in teams."
-                  delay={75}
-                  animateBy="words"
-                  direction="top"
-                  className="text-lg sm:text-xl mb-8 text-center items-center md:text-left"
+                  className="text-lg sm:text-xl mb-8 text-center md:text-start"
+                  delay={100}
+                  duration={0.9}
+                  ease="power3.out"
+                  splitType="chars"
+                  from={{ opacity: 0, y: 40 }}
+                  to={{ opacity: 1, y: 0 }}
+                  threshold={0.1}
+                  rootMargin="-100px"
                 />
 
                 <div className="flex item-center justify-center md:justify-start">
@@ -154,13 +189,16 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div style={{ height: 'auto', position: 'relative', overflow: 'hidden' }} className="py-12 w-full bg-black">
-        <LogoLoopWrapper logos={techLogos} speed={120} direction="left" logoHeight={40} gap={30} pauseOnHover scaleOnHover fadeOut fadeOutColor="#ffffff" ariaLabel="Technology partners" />
+      <div style={{ height: 'auto', position: 'relative', overflow: 'hidden' }} className="py-0 w-full bg-black ">
+        <LogoLoopWrapper logos={runningTextData} speed={40} direction="left" logoHeight={40} gap={30} pauseOnHover fadeOut fadeOutColor="#ffffff" ariaLabel="Lartz" />
       </div>
 
       {/* ABOUT */}
-      <div className="bg-black py-12 md:py-20 text-white relative z-10 overflow-x-hidden" id="about">
-        <div className="container mx-auto px-4">
+      <div className="bg-black py-12 md:py-20 text-white relative z-10 " id="about">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <LightRaysWrapper raysOrigin="top-center" raysColor="#ffffff" raysSpeed={1.5} lightSpread={0.6} rayLength={1.5} pulsating={true} mouseInfluence={1} />
+        </div>
+        <div className="container mx-auto px-4 mt-10">
           {/* Menggunakan grid-cols-1 di mobile, md:grid-cols-12 di tablet ke atas */}
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4">
             {/* Kolom Kiri: Card */}
@@ -178,7 +216,9 @@ export default function Home() {
 
             <div className="col-span-full md:col-span-8 mt-5 text-center md:text-start">
               {/* Judul */}
-              <h3 className="text-3xl sm:text-4xl font-semibold mb-4 text-[#460fd0]">I Develop Applications and also as a graphic designer</h3>
+              <h3>
+                <ShinyTextWrapper text="I Develop Applications and also as a graphic designer!" disabled={false} speed={3} className="text-3xl sm:text-4xl font-semibold mb-4 text-[#460fd0]" />
+              </h3>
 
               {/* Paragraf Deskripsi */}
               <p className="text-base sm:text-lg mb-4 ">
@@ -199,9 +239,24 @@ export default function Home() {
             </div>
           </div>
         </div>
+        <div style={{ height: 'auto', position: 'relative', overflow: 'hidden' }} className="py-0 w-full bg-black mt-5">
+          <LogoLoopWrapper logos={runningTextData} speed={40} direction="left" logoHeight={40} gap={30} pauseOnHover fadeOut fadeOutColor="#ffffff" ariaLabel="Lartz" />
+        </div>
       </div>
       {/* RECENT PROJECT */}
       <div className="bg-black py-5 md:py-20 text-white relative z-10 overflow-x-hidden" id="portfolio">
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <ParticlesWrapper
+            particleCount={500}
+            particleSpread={30}
+            speed={0.1}
+            particleColors={['#d00f0f', '#460fd0', '#ffffff']} // Sesuaikan dengan warna tema Anda
+            moveParticlesOnHover={true}
+            particleHoverFactor={0.3}
+            alphaParticles={true}
+            particleBaseSize={300}
+          />
+        </div>
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-semibold mb-8 text-center text-[#460fd0]">Recent Project</h2>
           <p className="text-center text-lg mb-16 text-gray-400">This is a project that I worked on both individually and as a team</p>
@@ -475,8 +530,11 @@ export default function Home() {
             </div>
           </SpotlightCard>
         </div>
-
-        <CarouselWrapper autoplay={true} autoplayDelay={3000} pauseOnHover={true} loop={true} round={false} />
+        <div className="container mx-auto px-4 py-12">
+          <div className="max-w-7xl mx-auto">
+            <CarouselWrapper autoplay={true} autoplayDelay={3000} pauseOnHover={true} loop={true} round={false} />
+          </div>
+        </div>
       </div>
 
       {/* SKILLS */}
@@ -621,70 +679,85 @@ export default function Home() {
             </div>
 
             {/* Kolom Kanan: Formulir Kontak */}
-            <div className="md:w-2/3 bg-gray-800 p-8 rounded-xl shadow-2xl">
-              {/* Mengoreksi judul: Send Massage -> Send Message */}
-              <h3 className="text-2xl font-semibold mb-6">Send Message</h3>
+            <ElectricBorderWrapper color="#00AEEF" speed={1.5} chaos={0.8} thickness={3} className="md:w-2/3 bg-gray-800 p-8 rounded-xl shadow-2xl " style={{ borderRadius: '16px' }}>
+              <div>
+                {/* Mengoreksi judul: Send Massage -> Send Message */}
+                <h3 className="text-2xl font-semibold mb-6">Send Message</h3>
 
-              {/* PERUBAHAN UTAMA: action diatur ke endpoint Formspree Anda */}
-              <form action="https://formspree.io/f/mqawagqj" method="POST" className="space-y-6">
-                {/* --- Input Tersembunyi untuk Subjek Email (Opsional) --- */}
-                <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio Anda" />
+                {/* PERUBAHAN UTAMA: action diatur ke endpoint Formspree Anda */}
+                <form action="https://formspree.io/f/mqawagqj" method="POST" className="space-y-6">
+                  {/* --- Input Tersembunyi untuk Subjek Email (Opsional) --- */}
+                  <input type="hidden" name="_subject" value="Pesan Baru dari Portfolio Anda" />
 
-                {/* Nama */}
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    required
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-[#460fd0] focus:border-[#460fd0] transition duration-200"
-                    placeholder="Input your full name"
-                  />
-                </div>
+                  {/* Nama */}
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-[#460fd0] focus:border-[#460fd0] transition duration-200"
+                      placeholder="Input your full name"
+                    />
+                  </div>
 
-                {/* Email */}
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    required
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-[#460fd0] focus:border-[#460fd0] transition duration-200"
-                    placeholder="name@example.com"
-                  />
-                </div>
+                  {/* Email */}
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
+                      Email address
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-[#460fd0] focus:border-[#460fd0] transition duration-200"
+                      placeholder="name@example.com"
+                    />
+                  </div>
 
-                {/* Pesan */}
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
-                    {/* Mengoreksi label: Massage -> Message */}
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-[#460fd0] focus:border-[#460fd0] transition duration-200"
-                    placeholder="Write your message here..."
-                  />
-                </div>
+                  {/* Pesan */}
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
+                      {/* Mengoreksi label: Massage -> Message */}
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows={4}
+                      required
+                      className="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-2 focus:ring-[#460fd0] focus:border-[#460fd0] transition duration-200"
+                      placeholder="Write your message here..."
+                    />
+                  </div>
 
-                {/* Tombol Kirim */}
-                <button type="submit" className="w-full text-white font-bold py-3 rounded-lg bg-[#460fd0] hover:bg-[#340c9f] transition duration-300">
-                  Send Message
-                </button>
-              </form>
-            </div>
+                  {/* Tombol Kirim */}
+                  <button type="submit" className="w-full text-white font-bold py-3 rounded-lg bg-[#460fd0] hover:bg-[#340c9f] transition duration-300">
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </ElectricBorderWrapper>
           </div>
         </div>
       </div>
+      <footer className="bg-black border-t border-gray-800 text-white relative z-20">
+        <div className="container mx-auto px-4 py-8 md:py-12">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            {/* Bagian Kiri: Hak Cipta & Credit */}
+            <div className="text-center md:text-left text-sm text-gray-400">
+              <p className="mb-1">2025 Latif Palikal Isbah. All rights reserved.</p>
+            </div>
+
+            {/* Bagian Tengah: Logo Sederhana */}
+            <div className="text-2xl font-bold text-[#460fd0]">LARTZ</div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

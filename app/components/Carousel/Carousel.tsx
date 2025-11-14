@@ -1,9 +1,16 @@
 'use client';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useImperativeHandle, forwardRef } from 'react'; // Import forwardRef dan useImperativeHandle
 import { motion, PanInfo, useMotionValue, useTransform } from 'motion/react';
 import React, { JSX } from 'react';
 
-// Data item diubah: HANYA ada id dan imagePath
+// --- DEFINISI BARU UNTUK REF ---
+// Tipe ini harus cocok dengan yang didefinisikan di CarouselWrapper
+export interface CarouselRef {
+  nextSlide: () => void;
+  prevSlide: () => void;
+}
+// ------------------------------
+
 export interface CarouselItem {
   id: number;
   imagePath: string;
@@ -19,7 +26,6 @@ export interface CarouselProps {
   round?: boolean;
 }
 
-// 1. DATA GAMBAR PORTFOLIO (12 item) - HANYA ID DAN PATH
 const IMAGE_ITEMS: CarouselItem[] = [
   { id: 1, imagePath: '/assets/images/portfolio/business/1.jpg' },
   { id: 2, imagePath: '/assets/images/portfolio/business/2.jpg' },
@@ -42,7 +48,10 @@ const VELOCITY_THRESHOLD = 500;
 const GAP = 16;
 const SPRING_OPTIONS = { type: 'spring', stiffness: 300, damping: 30 };
 
-export default function Carousel({ items = DEFAULT_ITEMS, baseWidth = 300, autoplay = false, autoplayDelay = 3000, pauseOnHover = false, loop = false, round = false }: CarouselProps): JSX.Element {
+// Ganti export default function Carousel dengan export default forwardRef
+const Carousel = forwardRef<CarouselRef, CarouselProps>(({ items = DEFAULT_ITEMS, baseWidth = 300, autoplay = false, autoplayDelay = 3000, pauseOnHover = false, loop = false, round = false }, ref): JSX.Element => {
+  // Terima ref sebagai argumen kedua
+
   const containerPadding = 16;
   const itemWidth = baseWidth - containerPadding * 2;
   const itemHeight = itemWidth * (9 / 16);
@@ -56,7 +65,33 @@ export default function Carousel({ items = DEFAULT_ITEMS, baseWidth = 300, autop
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // LOGIKA HOVER UNTUK PAUSE AUTOPLAY (Tidak berubah)
+  // --- FUNGSI NAVIGASI MANUAL BARU ---
+  const nextSlide = () => {
+    if (loop && currentIndex === items.length - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      setCurrentIndex((prev) => Math.min(prev + 1, carouselItems.length - 1));
+    }
+  };
+
+  const prevSlide = () => {
+    if (loop && currentIndex === 0) {
+      // Langsung pindah ke item terakhir (duplikat), lalu reset ke item asli terakhir di onAnimationComplete
+      setCurrentIndex(carouselItems.length - 1);
+      // NOTE: Pada loop, ini mungkin perlu penyesuaian yang lebih halus agar transisi tampak mundur dari item 0 ke item terakhir
+    } else {
+      setCurrentIndex((prev) => Math.max(prev - 1, 0));
+    }
+  };
+  // ------------------------------------
+
+  // --- EXPOSE FUNGSI KE REF (WAJIB UNTUK WRAPPER) ---
+  useImperativeHandle(ref, () => ({
+    nextSlide,
+    prevSlide,
+  }));
+  // --------------------------------------------------
+
   useEffect(() => {
     if (pauseOnHover && containerRef.current) {
       const container = containerRef.current;
@@ -71,7 +106,6 @@ export default function Carousel({ items = DEFAULT_ITEMS, baseWidth = 300, autop
     }
   }, [pauseOnHover]);
 
-  // LOGIKA AUTOPLAY (Tidak berubah)
   useEffect(() => {
     if (autoplay && (!pauseOnHover || !isHovered)) {
       const timer = setInterval(() => {
@@ -91,9 +125,9 @@ export default function Carousel({ items = DEFAULT_ITEMS, baseWidth = 300, autop
 
   const effectiveTransition = isResetting ? { duration: 0 } : SPRING_OPTIONS;
 
-  // LOGIKA RESET INDEX UNTUK LOOP TANPA JEDA VISUAL (Tidak berubah)
   const handleAnimationComplete = () => {
     if (loop && currentIndex === carouselItems.length - 1) {
+      // Reset dari item duplikat kembali ke item asli pertama (index 0)
       setIsResetting(true);
       x.set(0);
       setCurrentIndex(0);
@@ -101,22 +135,16 @@ export default function Carousel({ items = DEFAULT_ITEMS, baseWidth = 300, autop
     }
   };
 
-  // LOGIKA DRAG END (Tidak berubah)
   const handleDragEnd = (_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo): void => {
     const offset = info.offset.x;
     const velocity = info.velocity.x;
+
+    // Pindah ke kanan (index bertambah)
     if (offset < -DRAG_BUFFER || velocity < -VELOCITY_THRESHOLD) {
-      if (loop && currentIndex === items.length - 1) {
-        setCurrentIndex(currentIndex + 1);
-      } else {
-        setCurrentIndex((prev) => Math.min(prev + 1, carouselItems.length - 1));
-      }
+      nextSlide();
+      // Pindah ke kiri (index berkurang)
     } else if (offset > DRAG_BUFFER || velocity > VELOCITY_THRESHOLD) {
-      if (loop && currentIndex === 0) {
-        setCurrentIndex(items.length - 1);
-      } else {
-        setCurrentIndex((prev) => Math.max(prev - 1, 0));
-      }
+      prevSlide();
     }
   };
 
@@ -148,6 +176,7 @@ export default function Carousel({ items = DEFAULT_ITEMS, baseWidth = 300, autop
           x,
         }}
         onDragEnd={handleDragEnd}
+        // Hapus transisi di animate agar animasi dikontrol oleh motion/react
         animate={{ x: -(currentIndex * trackItemOffset) }}
         onAnimationComplete={handleAnimationComplete}
       >
@@ -166,20 +195,16 @@ export default function Carousel({ items = DEFAULT_ITEMS, baseWidth = 300, autop
                 rotateY: rotateY,
               }}
             >
-              {/* Tampilkan Gambar */}
               <img
                 src={item.imagePath}
                 alt={`Project ${item.id}`} // Alt text menggunakan ID
                 className="w-full h-full object-cover"
               />
-
-              {/* Hapus Overlay Teks (Title/Description) */}
             </motion.div>
           );
         })}
       </motion.div>
 
-      {/* Indikator Bawah (Dots) - Tidak berubah */}
       <div className={`flex w-full justify-center ${round ? 'absolute z-20 bottom-12 left-1/2 -translate-x-1/2' : ''}`}>
         <div className="mt-4 flex w-[150px] justify-between px-8">
           {items.map((_, index) => (
@@ -197,4 +222,6 @@ export default function Carousel({ items = DEFAULT_ITEMS, baseWidth = 300, autop
       </div>
     </div>
   );
-}
+});
+
+export default Carousel;
