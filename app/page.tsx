@@ -394,7 +394,7 @@ export default function Home() {
         {/* ========================================================================= */}
         {/* Wedding Web (Teks Kiri - Desktop) */}
         {/* ========================================================================= */}
-        <div className="flex justify-center md:justify-start items-center py-8">
+        <div className="flex justify-center items-center py-8">
           <SpotlightCard className="custom-spotlight-card hover:y-1 hover:scale-102 transition-all w-full max-w-7xl ml-2 mr-2" spotlightColor="rgba(226, 0, 255, 1)">
             {/* Perubahan: px-8 di mobile, md:px-4 di desktop */}
             <div className="container mx-auto **px-8 md:px-4**">
