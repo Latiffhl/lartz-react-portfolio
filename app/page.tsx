@@ -19,38 +19,39 @@ import RotatingTextWrapper from './components/RotatingTextWrapper';
 import SplitTextWrapper from './components/SplitTextWrapper';
 import BlurTextWrapper from './components/BlurTextWrapper';
 import AnimatedContentWrapper from './components/AnimatedContentWrapper';
-import LogoLoopWrapper from './components/LogoLoopWrapper';
+import LogoLoopWrapper, { LogoItemProp } from './components/LogoLoopWrapper';
 import DecayCardWrapper from './components/DecayCardWrapper';
 import LanyardWrapper from './components/LanyardWrapper';
 import SquaresWrapper from './components/SquaresWrapper';
 import StickerPeelWrapper from './components/StickerPeelWrapper';
 import TargetCursorWrapper from './components/TargetCursorWrapper';
 
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss } from 'react-icons/si';
-
-const runningTextData: LogoItem[] = [
+interface LogoItem {
+  node: React.ReactNode;
+  title: string; // Hapus tanda '?'
+  href: string; // Hapus tanda '?'
+  // Tambahkan 'id' jika diperlukan untuk keying
+  id?: number | string;
+}
+const runningTextData: LogoItemProp[] = [
   {
-    node: <span className="text-xl font-extrabold uppercase whitespace-nowrap tracking-wider mb-2">THIS IS NOT A COST.</span>,
+    node: <span className="text-xl font-extrabold uppercase ...">THIS IS NOT A COST.</span>,
+    title: 'Cost Text', // Wajib
+    href: '#', // Wajib
   },
-
-  // {
-  //   node: (
-  //     <div className="flex items-center">
-  //       <img src="/assets/logo/rotate-img.png" alt="Rotate Separator" className="h-10 w-auto object-contain mx-4" />
-  //     </div>
-  //   ),
-  // },
-
   {
-    node: <span className="text-xl font-extrabold uppercase whitespace-nowrap tracking-wider text-white mb-2">THIS IS A PERMANENT INVESTMENT IN THE FUTURE OF YOUR BUSINESS.</span>,
+    node: <span className="text-xl font-extrabold uppercase ...">THIS IS A PERMANENT INVESTMENT IN THE FUTURE OF YOUR BUSINESS.</span>,
+    title: 'Investment Text', // Wajib
+    href: '#', // Wajib
   },
-
   {
     node: (
       <div className="flex items-center">
         <img src="/assets/logo/rotate-img.png" alt="Rotate Separator" className="h-10 mt-3 w-auto object-contain mx-4" />
       </div>
     ),
+    title: 'Separator Image', // Wajib diisi meskipun placeholder
+    href: '#', // Wajib diisi
   },
 ];
 
@@ -190,7 +191,7 @@ export default function Home() {
         </div>
       </div>
       <div style={{ height: 'auto', position: 'relative', overflow: 'hidden' }} className="py-0 w-full bg-black ">
-        <LogoLoopWrapper logos={runningTextData} speed={40} direction="left" logoHeight={40} gap={30} pauseOnHover fadeOut fadeOutColor="#ffffff" ariaLabel="Lartz" />
+        <LogoLoopWrapper logos={runningTextData} speed={40} direction="left" scaleOnHover={false} logoHeight={40} gap={30} pauseOnHover fadeOut fadeOutColor="#ffffff" ariaLabel="Lartz" />
       </div>
 
       {/* ABOUT */}
@@ -240,7 +241,7 @@ export default function Home() {
           </div>
         </div>
         <div style={{ height: 'auto', position: 'relative', overflow: 'hidden' }} className="py-0 w-full bg-black mt-5">
-          <LogoLoopWrapper logos={runningTextData} speed={40} direction="left" logoHeight={40} gap={30} pauseOnHover fadeOut fadeOutColor="#ffffff" ariaLabel="Lartz" />
+          <LogoLoopWrapper logos={runningTextData} speed={40} direction="left" scaleOnHover={false} logoHeight={40} gap={30} pauseOnHover fadeOut fadeOutColor="#ffffff" ariaLabel="Lartz" />
         </div>
       </div>
       {/* RECENT PROJECT */}
@@ -333,7 +334,7 @@ export default function Home() {
                 {/* 2. KOLOM GAMBAR (order-1 di mobile) */}
                 <div className="col-span-full md:col-span-4 flex justify-center **order-1**">
                   <TiltedCard
-                    imageSrc="/assets/images/portfolio/Suvarna.jpg"
+                    imageSrc="/assets/images/portfolio/suvarna.jpg"
                     altText="SuvarnaChain"
                     captionText="Suvarna - Web"
                     containerHeight="400px"

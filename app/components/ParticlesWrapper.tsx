@@ -2,9 +2,7 @@
 'use client';
 import dynamic from 'next/dynamic';
 import React from 'react';
-
-// Import type props dari komponen Particles
-import type { ParticlesProps } from './Particles/Particles'; // Pastikan path ini benar
+import type { ParticlesProps } from './Particles/Particles';
 
 // Definisikan props yang sama untuk wrapper
 interface ParticlesWrapperProps {
