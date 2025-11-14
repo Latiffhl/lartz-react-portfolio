@@ -8,6 +8,7 @@ import TiltedCard from './components/TiltedCard/TiltedCard';
 import React from 'react';
 import { useRef } from 'react';
 import VariableProximity from './components/VariableProximity/VariableProximity';
+import ChatbotMini from './components/ChatbotMini';
 
 import ShinyTextWrapper from './components/ShinyTextWrapper';
 import ElectricBorderWrapper from './components/ElectricBorderWrapper';
@@ -69,6 +70,7 @@ export default function Home() {
       >
         <img src="/assets/logo/whatsapp-icon.png" alt="WhatsApp Chat" className="w-16 h-16 rounded-full shadow-lg" />
       </a>
+      <ChatbotMini />
       <div>
         <TargetCursorWrapper spinDuration={2} hideDefaultCursor={true} />
       </div>
