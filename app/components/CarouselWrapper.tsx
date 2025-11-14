@@ -1,8 +1,7 @@
 'use client';
 import React, { useRef, useState, useEffect, JSX } from 'react';
 import Carousel, { CarouselProps } from './Carousel/Carousel';
-import { ChevronLeft, ChevronRight } from 'lucide-react'; //
-
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 export interface CarouselRef {
   nextSlide: () => void;
   prevSlide: () => void;

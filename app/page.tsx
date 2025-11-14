@@ -166,18 +166,11 @@ export default function Home() {
                     threshold={0.1}
                     rootMargin="-100px"
                   />
-                  <SplitTextWrapper
-                    text="I am a software engineering student with expertise in programming and data management. I have experience working on projects both independently and in teams."
-                    className="text-lg sm:text-xl mb-8 text-center md:text-start"
-                    delay={100}
-                    duration={0.9}
-                    ease="power3.out"
-                    splitType="chars"
-                    from={{ opacity: 0, y: 40 }}
-                    to={{ opacity: 1, y: 0 }}
-                    threshold={0.1}
-                    rootMargin="-100px"
-                  />
+                </div>
+                <div className="flex flex-col w-full items-center md:items-start ">
+                  <p className="text-lg sm:text-xl mb-8 text-center md:text-start text-white">
+                    I am a software engineering student with expertise in programming and data management. I have experience working on projects both independently and in teams.
+                  </p>
                 </div>
 
                 <div className="flex item-center justify-center md:justify-start">
@@ -401,7 +394,7 @@ export default function Home() {
         {/* ========================================================================= */}
         {/* Wedding Web (Teks Kiri - Desktop) */}
         {/* ========================================================================= */}
-        <div className="flex justify-center items-center py-8">
+        <div className="flex justify-center md:justify-start items-center py-8">
           <SpotlightCard className="custom-spotlight-card hover:y-1 hover:scale-102 transition-all w-full max-w-7xl ml-2 mr-2" spotlightColor="rgba(226, 0, 255, 1)">
             {/* Perubahan: px-8 di mobile, md:px-4 di desktop */}
             <div className="container mx-auto **px-8 md:px-4**">

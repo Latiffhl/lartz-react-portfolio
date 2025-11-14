@@ -33,7 +33,6 @@ const TargetCursor: React.FC<TargetCursorProps> = ({ targetSelector = '.cursor-t
   }, []);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
     if (!cursorRef.current) return;
 
     const originalCursor = document.body.style.cursor;

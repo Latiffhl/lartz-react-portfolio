@@ -64,7 +64,6 @@ body {
   }
 }
 
-/* Definisikan utilitas animasi Tailwind */
 @layer utilities {
   .animate-whatsapp-shake {
     animation: shake-whatsapp 1.5s ease-in-out infinite; /* Kecepatan 1.5 detik, mengulang terus */
