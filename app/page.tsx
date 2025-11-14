@@ -61,7 +61,7 @@ export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden ">
       <a
-        href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20Anda."
+        href="https://wa.me/6285180772795?text=Halo,%20saya%20tertarik%20dengan%20Anda."
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 transition-transform duration-300 hover:scale-110 cursor-pointer animate-whatsapp-shake"
@@ -166,19 +166,19 @@ export default function Home() {
                     threshold={0.1}
                     rootMargin="-100px"
                   />
+                  <SplitTextWrapper
+                    text="I am a software engineering student with expertise in programming and data management. I have experience working on projects both independently and in teams."
+                    className="text-lg sm:text-xl mb-8 text-center md:text-start"
+                    delay={100}
+                    duration={0.9}
+                    ease="power3.out"
+                    splitType="chars"
+                    from={{ opacity: 0, y: 40 }}
+                    to={{ opacity: 1, y: 0 }}
+                    threshold={0.1}
+                    rootMargin="-100px"
+                  />
                 </div>
-                <SplitTextWrapper
-                  text="I am a software engineering student with expertise in programming and data management. I have experience working on projects both independently and in teams."
-                  className="text-lg sm:text-xl mb-8 text-center md:text-start"
-                  delay={100}
-                  duration={0.9}
-                  ease="power3.out"
-                  splitType="chars"
-                  from={{ opacity: 0, y: 40 }}
-                  to={{ opacity: 1, y: 0 }}
-                  threshold={0.1}
-                  rootMargin="-100px"
-                />
 
                 <div className="flex item-center justify-center md:justify-start">
                   <GradientText colors={['#d00f0f', '#3b23f1', '#d00f0f', '#3b23f1', '#d00f0f']} animationSpeed={3} showBorder={false} className="px-8 py-4 rounded-lg border cursor-target text-lg">
