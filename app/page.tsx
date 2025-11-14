@@ -167,7 +167,7 @@ export default function Home() {
                     rootMargin="-100px"
                   />
                 </div>
-                <div className="flex flex-col w-full items-center md:items-start ">
+                <div className="flex flex-col w-full items-center md:items-start relative z-10">
                   <p className="text-lg sm:text-xl mb-8 text-center md:text-start text-white">
                     I am a software engineering student with expertise in programming and data management. I have experience working on projects both independently and in teams.
                   </p>
