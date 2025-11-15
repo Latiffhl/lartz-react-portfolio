@@ -12,7 +12,8 @@ import { GoogleGenAI } from '@google/genai';
 
 // PENTING: Untuk lingkungan produksi, API Key harus disimpan di variabel lingkungan dan digunakan di sisi server (Next.js API Route) untuk keamanan.
 // Kita akan menggunakan implementasi fetch API biasa agar kode dapat dikompilasi tanpa paket @google/genai
-const GEMINI_API_KEY = ['AIzaSyDD4m4Wmjuu1UYRKJygbF4y7MzV-jwqXJA', 'AIzaSyAJd7sB-j0ICtjPUDQd4xmXEHXNmIfsvoY', 'AIzaSyAdLvYZ9XOhthm2qAs01_VgcOEubxvXE_g'];
+const API_KEYS = ['AIzaSyDD4m4Wmjuu1UYRKJygbF4y7MzV-jwqXJA', 'AIzaSyAJd7sB-j0ICtjPUDQd4xmXEHXNmIfsvoY', 'AIzaSyAdLvYZ9XOhthm2qAs01_VgcOEubxvXE_g'];
+const GEMINI_API_KEY = API_KEYS[0];
 const API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent';
 const MODEL = 'gemini-2.5-flash-preview-09-2025';
 
