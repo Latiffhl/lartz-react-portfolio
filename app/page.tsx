@@ -177,7 +177,9 @@ export default function Home() {
 
                 <div className="flex item-center justify-center md:justify-start">
                   <GradientText colors={['#d00f0f', '#3b23f1', '#d00f0f', '#3b23f1', '#d00f0f']} animationSpeed={3} showBorder={false} className="px-8 py-4 rounded-lg border cursor-target text-lg">
-                    Contact Now!
+                    <a href="https://wa.me/6285180772795?text=Halo,%20saya%20tertarik%20dengan%20Anda." target="_blank" rel="noopener noreferrer" aria-label="Chat via WhatsApp">
+                      Contact Now!
+                    </a>
                   </GradientText>
                 </div>
               </div>
